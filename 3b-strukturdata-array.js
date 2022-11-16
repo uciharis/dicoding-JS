@@ -37,3 +37,8 @@ console.log(myArray); //meninggalkan keterangan posisi array
 //metode lain gunakan splice();
 myArray.splice(3);
 console.log(myArray); //menghapus 33
+
+//---------------------spread operator----------------
+//membuat pengelolaan array menjadi lbh mudah
+//spread digunakan utk menyebarkan nilai array atau iterable object mnjd beberapa elemen
+//spread operator dituliskan 
