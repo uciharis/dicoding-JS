@@ -38,7 +38,32 @@ console.log(myArray); //meninggalkan keterangan posisi array
 myArray.splice(3);
 console.log(myArray); //menghapus 33
 
+console.log("-----------spread operator---------------")
 //---------------------spread operator----------------
 //membuat pengelolaan array menjadi lbh mudah
 //spread digunakan utk menyebarkan nilai array atau iterable object mnjd beberapa elemen
-//spread operator dituliskan 
+//spread operator dituliskan dg titik tiga (...)
+//contoh kode:
+const makananku= ["seafood", "salad", "nugget", "soup"];
+console.log(makananku);
+//mencetak dengan memanggil arraynya tentu akan menampilkan kurung kurawal
+//agar memanggil isi array tanpa menyertakan kurung kurawal, gunakan ...
+console.log(...makananku);
+//misalkan menggabungkan 2 array dan memanggilnya
+const warna=["merah", "kuning", "abu-abu"];
+const hewan=["kambing", "bebek", "sapi"];
+const warnaHewan=[warna, hewan];
+console.log(warnaHewan);
+//tercetak warnaHewan menampilkan gabungan warna dan hewan namun isi array tidak lebur
+//masih terlihat tanda kurung kurawal dan koma
+const warnaHewanBaru=[...warna,...hewan];
+console.log(warnaHewanBaru);
+//hasil cetak terbaru menampilkan array hewan dan warna bergabung/lebur
+console.log(...warnaHewanBaru);
+//hasil cetak menghilangkan kurung kurawal dan koma
+
+//selain array, spread dapat digunakan utk object
+const obj1={firstName:"obi-tol", age:30};
+const obj2={lastName:"kenotol", gender:"man"};
+const objNew={...obj1, ...obj2};
+console.log(objNew);
