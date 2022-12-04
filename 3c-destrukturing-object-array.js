@@ -17,3 +17,11 @@ const namaDepan=profil.namaDepan;
 const namaBelakang=profil.namaBelakang;
 const umur=profil.umur;
 console.log(namaDepan,namaBelakang,umur);
+//destructuring objek
+const profile = {
+    firstN: "jon",
+    lastN: "do",
+    age: 29
+}
+const {firstN,lastN, age}=profile;
+console.log(firstN, lastN, age);
