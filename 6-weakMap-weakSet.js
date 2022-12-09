@@ -25,3 +25,25 @@ setTimeout(function(){console.log(visitMap);},10000)
 // yg ada di dalamnya hingga jangka waktu yg ditetapkan.
 //ketika reference objek jonas dihapus dg mengubahny menjadi null
 //seharusnya map tdk lg menyimpan data user.
+//namun kenyataanny data jonas msh tersimpan dlm memori
+/* berbeda hal jika kita pake WeakMap*/
+let visitMap1 = new WeakMap();
+/*ketika nilai jonas tidak bs djangkau lg, jonas dihapus dr memori
+termasuk yg tersimpan dalam WeakMap */
+
+const {inspect} = require('util');
+let visitMap2 = new WeakMap(); //simpan daftar user
+function countUser2(user) {
+let count2=visitMap2.get(user) ||0;
+visitMap2.set(user, count2+1);
+}
+let jones = {name:"jenos"};
+countUser2(jones);
+jones= null;
+setTimeout(function() {
+    console.log(inspect(visitMap2, {showHidden: true}));
+},1000);
+
+//---------------- WeakSet ----------------
+//seperti halnya WeakMap. WeakSet merupakan weak referense dr set
+//sifatnya juga sama seperti WeakMap
