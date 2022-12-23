@@ -101,3 +101,18 @@ function eksponenFormFix(basenumber1, eksponen1=1){
     console.log(`${basenumber1} pangkat ${eksponen1} adalah ${result1}`);
 }
 eksponenFormFix(2); // aman, tidak lengkap isinya pun sudah ada default = 1
+
+//--- rest parameter---
+//kebalikan dari spread operator
+// jika spread operator ( ... ) menyebarkan array menjadi elemen beda, 
+//rest parameter (...) justru menggabungkan beberapa elemen jd 1 array
+function sum(...numbers){
+    let hasil=0;
+    for (let number of numbers) {
+        hasil +=number;
+    }
+    return hasil;
+}
+console.log(sum(1,2,3,4,5,6,7,9));
+
+// --- arrow function --
