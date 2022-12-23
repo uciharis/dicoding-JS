@@ -123,3 +123,41 @@ console.log(sum(1,2,3,4,5,6,7,9));
 //jika reguler funct dapat berisi fungsi deklarasi dan ekspresi
 //arrow funct hanya ekspres aja( funct tanpa nama tp langsung ditampung ke dalam var ).
 // contoh reguler funct pada deklarasi n ekspress
+// --reguler funct--
+/*
+--funct declaration--
+function sayHai(greet){
+    console.log(`${greet} !!`);
+}
+
+--funct expression--
+const sayName=function(name){
+    console.log(`namaku adalah ${name}`);
+}
+
+*/
+
+// ---arrow funct ---
+/*
+--funct expression
+const sayHai=(greet)=>{
+    console.log(`${greet}!!`)
+}
+
+const sayName=(name)=>{
+    console.log(`namaku adalah ${name}`)
+}
+ */
+
+
+//keyword function tidak diperlukan jika menggunakan arrow function
+//sudah digantikan dengan '=>'
+//kita bs menghapus tanda kurung apabila hanya pake 1 parameter
+/* const sayHai=greet=>{
+console.log(`nama saya adalah ${greet}!!`)
+}
+*/
+let sayHalou=nama1=>{
+    console.log(`nama saya itu ${nama1}`)
+}
+sayHalou("jokorowo");
