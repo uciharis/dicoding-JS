@@ -116,3 +116,9 @@ function sum(...numbers){
 console.log(sum(1,2,3,4,5,6,7,9));
 
 // --- arrow function --
+//es6 memperkenalkan fungsi baru bernama arrow function.
+//mirip reguler function tp beda penulisan
+//penulisan menggunakan tanda panah '=>'
+//selain penulisan, sifatnya jg berbeda.
+//jika reguler funct dapat berisi fungsi deklarasi dan ekspresi
+//arrow funct hanya ekspres aja( funct tanpa nama tp langsung ditampung ke dalam var ).
