@@ -161,3 +161,23 @@ let sayHalou=nama1=>{
     console.log(`nama saya itu ${nama1}`)
 }
 sayHalou("jokorowo");
+// sedangkan jika kita tdk sama sekali memerlukan parameter, maka kita tuliskan 
+//tanda kurung kosong
+//contoh: 
+const sayHo=()=>{ //tanda kurung kosong,karna tdk perlu parameter
+    console.log("selamat pageeee!!")
+}
+sayHo();
+// catatan:
+//apabila fungsi hanya terdiri dari 1 baris, kita bs menghapus kurung kurawal
+//selain itu,jika fungsi 1 baris dan perlu mengembalikan nilai, tidak perlu dituliskan returnnya
+//contoh:
+const kurangi=(a,b)=>{ //normalnya
+    return a-b; //funct hanya 1 baris
+}
+console.log(kurangi(3,2)); //works, hasil=1
+
+// menjadi
+const kurangi1=(a,b)=>a-b; // tanpa kurawal tanpa return
+
+console.log(kurangi1(4,3)); //works, hasil=1
