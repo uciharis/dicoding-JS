@@ -122,3 +122,4 @@ console.log(sum(1,2,3,4,5,6,7,9));
 //selain penulisan, sifatnya jg berbeda.
 //jika reguler funct dapat berisi fungsi deklarasi dan ekspresi
 //arrow funct hanya ekspres aja( funct tanpa nama tp langsung ditampung ke dalam var ).
+// contoh reguler funct pada deklarasi n ekspress
