@@ -3,7 +3,7 @@
 //contoh:
 class Mobil { //menggunakan class
     constructor(merek, warna, maxSpeed){ //menggunakan constructor
-        this.merek=merek;
+        this.merek=merek; //this mengacu pada objek saat ini
         this.warna=warna;
         this.maxSpeed=maxSpeed;
     }
