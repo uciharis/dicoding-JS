@@ -71,3 +71,21 @@ class MailService {
 }
 const whatsapp = new MailService("+6281234567890"); //ini adalah instance
 const email = new MailService("dimas@dicoding.com"); //ini adalah instance juga
+
+//namun, cara membuat objek/ instance whatsapp dan email tidak memiliki perbedaan
+// masalah yang ditimbulkan adalah terdapat kemampuan yang tidak dibutuhkan diantara
+// kedua objek tsb.
+// whatsapp tidak membutuhkan sendDelayedMessage() dan email tidak membutuhkan
+// fitur sendBroadcastMessage()
+
+const whatsapp = new MailService("+6281234567890");
+const email = new MailService ("dimas@dicoding.com");
+whatsapp.sebdDelayedMessage();// ??
+email.sendBroadcastMessage(); // ??
+
+//paradigma OOP menawarkan solusi dalam memecahkan masalah ini dengan konsep
+// pewarisan atau inheritance
+//dg konsep in, diwariskan sifat sifat yang berada di dalam sebuah class ke class lain.
+// konsep ini cocok ketika kita ingin membuat objek mirip dan memiliki sedikit perbedaan seperti kasus yang kita hadapi
+// implementasinya, kita tampung seluruh sifat yang sama pada sebuah class induk (superclass)
+//
