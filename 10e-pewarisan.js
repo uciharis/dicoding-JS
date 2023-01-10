@@ -44,4 +44,30 @@ class EmailService{
 
 // jika kita lihat kode diatas terdapat duplikasi kode utk bagian yg sama
 // pada objek tsb.walau sederhana tetapi tdk menutup kemungkinan kesamaan tsb
-//terus berkembang shg duplikasi tsb semakin sering
+//terus berkembang shg duplikasi tsb semakin sering terjadi
+// untuk menghindari duplikasi kode maka bisa saja kita membuat 1 class
+// yang mencakup kemampuan kedua objek tersebut.
+// kita cukup membuat instance(anak) WhatsAppService dan EmailService
+// menggunakan satu class saja
+
+class MailService {
+    constructor(sender) {
+        this.sender=sender;
+    }
+    sendMessage(message, receiver) {
+        console.log(`${this.sender} sent ${message} to ${receiver}`);
+    }
+    sendDelayedMessage(message, receiver, delay){
+        setTimeout(()=>{
+            this.sendMessage(message, receiver);
+        }, delay);
+    }
+    sendBroadcastMessage(message, receivers){
+        for (const receiver of receivers){
+            this.sendMessage(message, receiver);
+        }
+        
+    }
+}
+const whatsapp = new MailService("+6281234567890"); //ini adalah instance
+const email = new MailService("dimas@dicoding.com"); //ini adalah instance juga
