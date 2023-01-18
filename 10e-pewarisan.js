@@ -147,3 +147,72 @@ whatsapp.sendDelayedMessage(); //error
 email.sendMessage('hello', 'john@doe.com');
 email.sendDelayedMessage('hello', 'john@doe.com', 3000);
 email.sendBroadcastMessage(); //error
+
+// ---pewarisan sifat tanpa ES6 class---
+// bagaimana jika pewarisan dilakukan tanpa atau sblmnya hadirnya sintak class ES6 ?
+// berikut adalah teknik prototype inheritance :
+function MailService(sender){
+    this.sender= sender;   
+}
+MailService.prototype.sendMessage = function (message,receiver){
+    console.log(`${this.sender} sent ${message} to ${receiver}`);
+}
+function WhatsAppService(sender){
+    MailService.call(this, sender);
+}
+// prototype inheritance
+WhatsAppService.prototype = Object.create(MailService.prototype);
+WhatsAppService.prototype.constructor = WhatsAppService;
+WhatsAppService.prototype.sendBroadcastMessage= function (message, receivers) {
+    for (const receiver of receivers) {
+        this.sendMessage(message, receiver);
+    }
+} 
+function EmailService(sender){
+    MailService.call(this, sender);
+}
+//prototype inheritance
+EmailService.prototype = Object.create(MailService.prototype);
+EmailService.prototype.constructor = EmailService;
+EmailService.prototype.sendDelayedMessage = function (message, receiver, delay){
+    setTimeout(()=>{
+        this.sendMessage(message, receiver);
+    }, delay);
+}
+const whatsapp = new WhatsAppService('+6281234567890');
+const email = new EmailService('dimas@dicoding.com');
+whatsapp.sendMessage("hellow", ['+6289876543210', '+6282234567890']);
+email.sendMessage("hellow", "john@doe.com");
+email.sendDelayedMessage("hello", "john@doe.com", 3000);
+
+//pewarisan dengan keyword function sulit dibaca, alasan inilah yang membuat sintak class
+// hadir pada ES6. meskipun sintaks class terkesan jauh berbeda dengan function namun sebenarnya
+//implementasi keduanya sama-sama menggunakan prototype inheritance.
+//ingat, class hanyalah cara lain dalam membuat costructor function
+
+// --- instanceof ---
+// saat menulis kode, kita perlu mengecek jenis dari objek tsb. salah satu cara untk mengecek
+// adalah menggunakan instanceof. ini digunakan utk mengecek rantai prototypenya, atau lebih tepatnya
+// mengecek prototype dari constructor function atau classnya. maka dari itu gunakan instanceof
+//contoh:
+// operand1 instanceof operand2
+// operand1 merupakan objek yang ingin dites prototype nya
+// operand2 merupakan constructor function atau class
+// berikut ini merupakan contoh penggunaan dari instanceof dalam mengecek objek whatsapp yang merupakan
+// instance dari class WhatsAppService
+const whatsapp = new WhatsapppService('+628123467890');
+console.log(whatsapp instanceof WhatsAppService); // true
+console.log(whatsapp instanceof EmailService); //false
+
+// operator instanceof mengembalikan boolean. hasilnya true jika bje yang ditens (operand1)
+// memiliki prototype yang sama dari operand2, bernilai salah jika bukan.
+// instanceof juga mengecek prototype secara berantai. instanceof mengecek hingga prototype diwarisi oleh objek tsb
+const whatsApp = new WhatsAppService("+6281234567890");
+const email = new EmailService("dimas@dicoding.com");
+console.log(whatsapp instanceof WhatsAppService); //true
+console.log(whatsapp instanceof EmailService); //false
+console.log(whatsapp instace MailService); //true, Mailservice induk kelas
+
+console.log(email instance of EmailService); //true
+console.log(email instanceof WhatsAppService); //false
+console.log(email instanceof MailService); //true
