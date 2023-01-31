@@ -30,7 +30,7 @@ console.log( " ----------");
     const array1 = new Array('a', 'b', 'c', 'a', 'b', 'c');
     console.log(array1); // output : ['a', 'b', 'c', 'a', 'b', 'c']
     // membuat sturktur data dalam bentuk array
-    // seklias tidak ada yang istimewa karena kita bs membuat array dg cara biasa
+    // sekilas tidak ada yang istimewa karena kita bs membuat array dg cara biasa
     // namun dg class Array kita bs menerapkan konsep pewarisan utk membuat subclass baru yang dapat dimodifikasi
 
     // misal kita membuat array tetapi dengan nilai elemen yg unik memakai class UniqueArray yang mewarisi
