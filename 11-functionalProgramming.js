@@ -79,3 +79,44 @@ const orang = {
 };
 const newOrang = createPersonUmur(47, orang);
 console.log({orang, newOrang});
+
+// utk memastikan suatu fungsi sudah pure atau belom, pastikan 3 hal berikut pada fungsi yg dibuat
+// 1. mengembalikan nilai yg sama bila inputannya sama
+// 2. hanya bergantung pada argumen yg diberikan
+// 3. tidak menimbulkan efek samping
+
+/** --- Immutability ---
+ * adalah sebuah objek yg tidak boleh diubah setelah objek tsb dibuat
+ * konsep immutability sangat kental pada paradigma FP. 
+ * ketika menggunakan array.map(), alih2 mengubah nilai dr array itu sendiri, malah ia membuat atau menghasilkan array baru 
+ */
+
+const nama1 = ['haria', 'roen', ' jeff', 'tomes'];
+const newNama1Excmark = nama1.map((namA)=> `${namA}!!!`);
+console.log({
+    nama1, newNama1Excmark
+});
+// lantas bagaimana bila kita perlu mengubah nilai dr sebuah objek ? contoh seperti ini
+
+const yuser ={
+    firstnem : 'herii',
+    lastnem : 'proter', //ini yg typo
+}
+const renemLastNemUser = (newLastName, yuser)=> {
+    yuser.lastnem = newLastName;
+}
+renemLastNemUser('poter', yuser);
+console.log(yuser); 
+// tujuan tercapai namun ini masih blm konsep FP. seharusnya tidak mengubah nilai objek langsung tetapi
+// return nilai dalam objek baru.
+
+const yuser1 = {
+    firstNem1: 'herri',
+    lastNem1 : 'proter' //ini yg typo
+}
+const createUserWithNewLastNem = (newLastNem1, yuser1)=> {
+    return {... yuser1, lastNem1: newLastNem1};
+}
+const newYuser= createUserWithNewLastNem('pooter', yuser1);
+console.log(newYuser);
+// hasilnya sama
