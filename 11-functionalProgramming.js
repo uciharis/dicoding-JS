@@ -120,3 +120,83 @@ const createUserWithNewLastNem = (newLastNem1, yuser1)=> {
 const newYuser= createUserWithNewLastNem('pooter', yuser1);
 console.log(newYuser);
 // hasilnya sama
+// anda juga bs menyesuaikan nama func dari renemLastNemUser menjadi createUserWithNewLastName
+// hal ini perlu utk mengindikasikan bahwa fungsi mengembalikan
+// atau menghasilkan objek user baru
+
+/* --- Rekursif ---
+ * 
+rekursif merupakan teknik pada sebuah fuct yang memanggil dirinya sendiri
+misal. kita akan mengubah funct countDown yg biasanya menggunakan literasi
+seperti for, foreach, while seperti kode dibawah ini menjadi bentuk rekursif
+ */
+console.log("----fungsi count down----");
+const countDown = start => {
+    do {
+        console.log(start);
+        start -=1;
+    }
+    while(start>0);
+};
+countDown(10); // belum rekursif
+
+// diubah menjadi rekursih sbb :
+console.log("count down versi rekursif")
+const hitungMundur = mulai => {
+    console.log(mulai);
+    if(mulai>0) hitungMundur(mulai-1);
+};
+hitungMundur(20);
+
+// dg teknik rekursif, kita sebenarnya bs menggantikan operasi literasi dg rekursif
+// namun tidak sebatas itu saja, dg rekursi kita dapat membuat dan mengolah
+// data structure seperti tree dan array
+
+
+
+/** --- Hi order function
+ * JS memiliki kemampuan first class funct.
+ * karena itu fungsi pada JS dapat diperlakukan layaknya sebuah data.
+ * kita bs menyimpan funct dalam variabel, memberikan funct sbg parameter pada
+ * fungsi lainnya hingga mengembalikan funct ke dalam funct
+ * 
+ */
+
+const hello = ()=> {
+    console.log('hellll-ooo!')
+};
+const say = (someFunction) => {
+    someFunction();
+}
+const sayHello = () =>{
+    return ()=> {
+        console.log('hellll-oo0');
+    }
+}
+hello();
+say(hello);
+sayHello()();
+
+/* karena kemampuan first class funct ini, kita dapat membuat hi order funct dengan mudah
+ * hi order funct merupakan fungsi yang dpt menerima fungsi lainnya pada argumen, mengembalikan sebuah fungsi, atau bahkan keduanya
+ * teknik ini biasa digunakan utk :
+ * a. mengabstraksi atau mengisolasi sebuah event, aksi atau menangani alur asynchronous menggunakan call back, promise dsb
+ * b. membuat utilitis yg dpt digunakan d berbagai tipe data
+ * c. membuat teknik currying atau funct composition
+ * 
+ * Array map() merupakan slh satu cntoh hi order function yg ada di JS.
+ * karenanya, ia menerima satu buah argumen yang merupakan sbuah funct.
+*/
+const names1 = ['hari', 'roen', 'jeffff', 'tomes'];
+const arrayMap = (arr, action)=> {
+    const looopTrough = (arr, action, newArray = [], index = 0)=> {
+        const item = arr[index];
+        if(!item) return newArray;
+        return looopTrough(arr,action, [... newArray, action(arr[index])], index+1);
+    }
+    return looopTrough(arr,action);
+}
+const newNames1 = arrayMap(names1, (name)=> `${name}!`);
+console.log({
+    names1, newNames1,
+});
