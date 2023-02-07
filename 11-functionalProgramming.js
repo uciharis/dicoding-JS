@@ -200,3 +200,67 @@ const newNames1 = arrayMap(names1, (name)=> `${name}!`);
 console.log({
     names1, newNames1,
 });
+
+/** --- reusable Funct ---
+ * artinya adalah bahwa fungsi berparadigma FP adalah pure sehingga tidak
+ * terpengaruh oleh keadaan di luar atau dr luar. hal ini tentu membuat suatu funct dpt digunakan berkali kali
+ * tanpa khawatir mendapatkan hasil di luar ekspektasi
+ * beberapa contoh funct yg sifatnya reusable khususnya adalah hi order funct seperti array.map,
+ * array.filter, dan arrayforEach
+ */
+
+// array.map
+// merupakan fungsi bawaan, dapat dipanggil dr sebuah data bertipe array dan menerima satu callback
+const newArray1 = ['harii', 'rone', 'jefff', 'tomaz'].map((name)=> {return `${name}!`});
+console.log(newArray1);
+// fungsi map akan mengembalikan array baru. nilai per item pada array yang dikembalikan, dihasilkan dari kembalian callback funct
+// karena callback funct dapat mengakses item array.
+
+// array.filter
+// funct ini berguna utk melakukan proses penyaringan thd nlai array yg ada.
+// dapat digunakan utk menghilangkan beberapa item array berdasar spesifikasi tertentu
+// cara kerja mirip array.map namun callbacknya dr fungsi ini mengembalkan booblean
+//dimana bolean ini digunakan utk menentukan item array lolos saring atau tidak
+// funct dibawah utk menghilangkan seluruh nilai Bolean(true) pada array
+const trutyArray = [1, '', 'halooo', 0, null, 'harrrrry', 14].filter((item) => Boolean(item));
+console.log(trutyArray); //contoh 1
+console.log(' -------- ');
+const student = [
+    {
+        nama2: 'heria',
+        score: 60,
+},
+    {
+        nama2: ' jamesh',
+        score: 88
+    },
+    {
+        nama2: 'kung pao',
+        score: 75
+    }
+];
+const dapatBeasiswa = student.filter((student)=> student.score>80);
+console.log(dapatBeasiswa); //contoh 2
+
+//aray.reduce
+// arr.reduce(callback(accumulator, currentValue, [currentIndex], [array]), [initialValue])
+// [ ...] adalah opsional parameter
+//callback funct dr funct ni dapat diolah utk dimanipulasi data curretValue dan menyimpannya dalam accumulator
+// selain itu fungsi reduce memiliki nilai awal yang dapat didefinisikan pada bagian initialValue.
+// contoh penggunaan pada funct menjumlahkan total nilai siswa
+// menggunakan objek students
+const totalScore = student.reduce((acc, student)=> acc+ student.score,0);
+console.log(totalScore);
+
+
+//array.some
+//funct ini menghasilkan nilai boolean
+// arr.some(callback(element, [index],[array], [thsArg])
+// [...] adalah opsional parameter
+// nilai yg dihasilkan berdasarkan pada pernyatan pakah ada setidaknya satu dari deretan nilai dalam array
+// yang lolos berdasarkan kriteria yang kita tuliskan dalam callback func.
+// contoh penggunaan utk mengetahui deretan angka terdapat angka genap
+const arrr = [1,2,3,6,7,8];
+const even = arrr.some(element=> element%2 ===0);
+console.log(even); //bernilai true karna ada elemen genap
+
