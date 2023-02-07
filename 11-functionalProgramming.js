@@ -281,3 +281,66 @@ console.log(cariJamesh);
 //secara default, fungsi sort akan mengubah semua nilai dalam deretan menjadi bentuk string dan mengurutkannya scr ascending
 //arr.sort([compareFunct])
 // [...] adalah opsional parameter
+//contoh sbb:
+const bulan = ['maret', 'jan', 'feb', 'des'];
+bulan.sort();
+console.log(bulan); // diurutkan berdasar huruf depanny sj
+// output : [ 'des', 'feb', 'jan', 'maret' ]
+
+const arrray = [1,3,22,3,100,111]; //sorting hanya angka depanny saja wkwk
+arrray.sort();
+console.log(arrray);
+// contoh pengurutan diatas berdasar pada pengurutan bentuk tipe data string
+// jika kita ingin mengurutkan sesuai dg kriteria yg kita inginkan, maka perlu membuat compare funct sendiri
+
+const arrr1 = [1,33,40,120,3];
+const compareNumber = (a,b)=>{
+    return a-b;
+};
+const sorting = arrr1.sort(compareNumber);
+console.log(sorting); // ini baru pass
+// pada compare funct, fungsi akan membandingkan 2 nilai yg menghasilkan 3 kemungkinan
+// negatif, positif atau 0
+// jika negatif maka a,b
+// jika positif maka b,a
+// jika nol maka tidak ada perubahan
+
+//array.every
+// merupakan fungsi yang cek semua nilai dr sebuah array apakah sesuai dg kriteria yg didefinisikan
+// kembalian nilai dr funct ini adalah boolean
+// arr. every(callback(element, [index], [array]))
+// sbg contoh, kita akan mengecek apakah seorang siswa tlh lulus semua uji materi
+const skors = [70,85, 61];
+const minimSkor = 65;
+const lulusKor = skors.every(skors => skors >= minimSkor);
+console.log(lulusKor); //false karna ada yg <65
+
+//array,forEach
+// funct utk memanggil funct callback pada setiap iterasi index array.
+// funct ini tdk mengembalikan nilai apapun.
+// fungsi hanya memanggil fungi callbacknya not more.
+//contoh pake newArray1
+console.log(newArray1);
+for(let i=0;i<newArray1.length;i++){
+    console.log(`helooo, ${newArray1[i]}`);
+} //cara imperatif
+console.log(' ----------');
+newArray1.forEach((newArray1)=>{
+    console.log(`hello, ${newArray1}`);
+}); //cara deklaratif
+//ketahuilah bahwa ketika menggunakan forEach, kita tdk bs menggunakan operator break atau continue
+// pada proses perulangan( anda bs melakukannya pada perulangan for)
+// hal ini juga berlaku ketika pada funct map dan filter
+const apel = ['malang', 'brastagi', 'california'];
+for(let i=0;i< apel.length;i++){
+    if(apel[i]==='brastagi') continue; //bisa
+    console.log(`helloooo, ${apel[i]}`);
+}
+/**
+ * 
+    apel.forEach((apel)=>{
+    if(apel==='brastagi') continue; //tidak bs
+    console.log(`helo, ${apel[i]}`);
+});
+nb : jika di run atau tidak dijadikan komen akan error
+*/
