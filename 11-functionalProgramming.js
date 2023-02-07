@@ -231,7 +231,7 @@ const student = [
         score: 60,
 },
     {
-        nama2: ' jamesh',
+        nama2: 'jamesh',
         score: 88
     },
     {
@@ -255,7 +255,7 @@ console.log(totalScore);
 
 //array.some
 //funct ini menghasilkan nilai boolean
-// arr.some(callback(element, [index],[array], [thsArg])
+// arr.some(callback(element, [index],[array]), [thsArg])
 // [...] adalah opsional parameter
 // nilai yg dihasilkan berdasarkan pada pernyatan pakah ada setidaknya satu dari deretan nilai dalam array
 // yang lolos berdasarkan kriteria yang kita tuliskan dalam callback func.
@@ -264,3 +264,20 @@ const arrr = [1,2,3,6,7,8];
 const even = arrr.some(element=> element%2 ===0);
 console.log(even); //bernilai true karna ada elemen genap
 
+//array.find
+// mirip dengan array.some(), digunakan utk mencari apakah di dalam deretan nilai terdapat
+// nilai yg sesuai dg kriteria yg didefinisikan
+// yg membedakan adalah, array.find menghasilkan satu nilai dr elemen yg pertama kali ditemukan
+// berdasarkan kriteria tertentu dan akan menghaslkan nilai undefine apabila tidak ada kriteria yg cocok
+// arr.find(callback(element, [index], [array]), [thisArg]);
+// [ ...] adl opsional parameter
+// sbg contoh kita akan mencari siswa bernama 'james'
+// kita pakai student
+const cariJamesh = student.find(student => student.nama2 === 'jamesh');
+console.log(cariJamesh);
+
+//array sort
+// berguna tuk melakukan pengurutan nilai dari sebuah deretan nilai.
+//secara default, fungsi sort akan mengubah semua nilai dalam deretan menjadi bentuk string dan mengurutkannya scr ascending
+//arr.sort([compareFunct])
+// [...] adalah opsional parameter
