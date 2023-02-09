@@ -1,0 +1,14 @@
+{
+  "name": "coffeemachine",
+  "version": "1.0.0",
+  "description": "projek mesin kopi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "projek"
+  ],
+  "author": "haris",
+  "license": "ISC"
+}
