@@ -14,6 +14,7 @@ console.log("Mencampurkan air dan kopi");
 console.log("Menuangkan kopi ke dalam gelas");
 console.log("Menuangkan susu ke dalam gelas");
 console.log("Kopi Anda sudah siap!");
+const coffeStock = require('./state');
 // jalankan dengan ketik " node index.js" di folder CoffeeMachine
 // pada berkas package.json terdapat beberapa objek penting salah satunya adalah object script
 // seperti ini : (ada d dalam berkas package.json)
@@ -38,3 +39,17 @@ console.log("Kopi Anda sudah siap!");
 // mari kita buat script baru utk menjalankan kode dari berkas index.js
 // beri nama properti "start" dg nilai perintah "node index.js"
 // lalu jalankan di terminal node index.js (jgn lupa tutup file nya tsb)
+
+// -- menggunakan require --
+//utk mengimport nilai module coffeStock
+const stokCoffee = require('./state') // pathnya menggunakan './state' karena dalam 1 lokasi folder Coffemachine
+console.log(stokCoffee);
+const makeCoffe = (type, miligrams)=>{
+  if(coffeStock[type] >= miligrams){
+    console.log('biji kopi available.');
+  }
+  else {
+    console.log('biji kopi sudah habis');
+  }
+}
+makeCoffe('liberica', 20); // output : biji kopi available

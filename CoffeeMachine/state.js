@@ -3,7 +3,30 @@
  * namun bayangkan apabila kita harus mencari baris kode yang memiliki bug dari jutaan kode baris
  * untuk itulah pentingnya membagi projek menjadi beberapa berkas berdasarkan tugas dan fungsinya
  * disitulah kita membuat sebuah modul JS. tak lain adlah utkmenghubungkan berkas JS yang terpisah agar slg dapat digunakan
- * 
- * 
- * 
  */
+
+
+// --- export dan import module ---
+/*
+ * modul bekerja dg cara eksport dan import nilai. baik itu nilai var, fungsi array, obj, atau class
+ * satu berkas JS terdiri dari 1 modul yg dapat kita eksport menjadi lebih dari 1 nilai
+ * 
+ * dalam lingkungan nodejs, gunakan perintah module.exports utk melakukan proses eksport modul.
+ * setiap berkas JS yang berjalan pada node, memiliki objek modul lokal yang memiliki properti eksport.
+ * properti itu digunakan utk mendefinisikan nilai apa yang akan dieksport dari berkas tsb
+ * dibawah ini adalah contoh melakukan eksport nilai menggunakan module.export
+ * (letakkan kode di bawah ke dalam state.js)
+ */
+const coffeStock = {
+    arabica: 100,
+    robusta: 150,
+    liberica: 200
+}
+module.exports = coffeStock; // kode ini membuat objek coffeStock. nilai ini nanti bs diimport ke berkas JS lainnya
+console.log(module);
+//tambahkan kode : console.log(modul) d akhir berkas utk melihat objek coffeStock menjadi nilai dr properti exports
+// lalu lihat hasilnya melalu terminal dg kode : node state.js
+
+// lalu bagaimana cara utk melakukan impor atau menggunakan objek yang sudah di ekspor?
+// caranya adalah menggunakan methode require()
+// letakkan methode require() pada index js
