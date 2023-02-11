@@ -1,0 +1,15 @@
+{
+  "name": "coba-es6module-eksportimport",
+  "version": "1.0.0",
+  "description": "folder coba es6 module export import default",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "haris n",
+  "license": "ISC"
+}
