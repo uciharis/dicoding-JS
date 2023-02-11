@@ -30,3 +30,18 @@ console.log(module);
 // lalu bagaimana cara utk melakukan impor atau menggunakan objek yang sudah di ekspor?
 // caranya adalah menggunakan methode require()
 // letakkan methode require() pada index js
+
+// --- ekspor beberapa nilai pada node.js ---
+//bagaimana agar kita bs mengekspor beberapa nilai sekaligus ?
+// misal kita ingin menambah variabel isCoffeMachineReady
+const isCoffeMachineReady = true;
+// kita tdk bs mengekspor dg cara pertama seperti ini :
+/**
+ * module.exports = coffeStock;
+ * module.exports = isCoffeMachineReady;
+ */
+// kode diatas berarti bahwa dilakukan inisiasi ulang sehingga
+// module nya justru ter override
+// solusinya adalah memanfaatkan object literals 
+module.exports = {coffeStock, isCoffeMachineReady}; //cara ekspor module lebih dr 1
+// cara impornya lewat index.js dg teknik  destructuring

@@ -42,7 +42,9 @@ const coffeStock = require('./state');
 
 // -- menggunakan require --
 //utk mengimport nilai module coffeStock
-const stokCoffee = require('./state') // pathnya menggunakan './state' karena dalam 1 lokasi folder Coffemachine
+//const stokCoffee = require('./state') // pathnya menggunakan './state' karena dalam 1 lokasi folder Coffemachine
+// -- kode diatas dikomen dulu karna hanya utk impor 1 module --
+const {stokCoffee, isCoffeMachineReady}= require('./state');
 console.log(stokCoffee);
 const makeCoffe = (type, miligrams)=>{
   if(coffeStock[type] >= miligrams){
@@ -53,3 +55,8 @@ const makeCoffe = (type, miligrams)=>{
   }
 }
 makeCoffe('liberica', 20); // output : biji kopi available
+
+console.log(isCoffeMachineReady); // modul brhasil diekspor
+
+// perlu diingat ketika mmelakukan destructuring objek, pastikan penamaan variabel lokal
+// sesuai dg properti objek. jika tidak maka variabel tsb akan undefined
