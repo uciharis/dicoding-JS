@@ -77,3 +77,41 @@ npm install lodash
 //version number punya format xx.xx.xx = major.minor.patch
 // ~1.0.2 artinya npm dapat menginstall versi 1.0.2 atau versi patch terbaru seperti 1.0.4
 // ^1.0.2 artinya npm dapat instal versi 1.0.2 atau minor terbaru 1.1.0
+
+// -- using package --
+// perlu dipahami bahwa package yang kita tambahkan ke dalam projek sebenarnya adalah module
+// itulah kenapa muncul folder node_module yg berisi kode2 JS yg menyusun suatu package
+// karena merupakan module, kita dapat menambahkan kode dari package dg menggunakan keyword import
+/* -- contoh kode import --- 
+import variableNames from 'packages-name'; //contoh import
+* --akhir kode ---
+   */
+
+//sehingga utk menggunakan kode dr package lodash yg telah kita pasang, tambahkan kode berikut pada berkas index.js
+// contoh kode: import _ from 'lodash'; // tanda underscore merupakan standar dr lodash yg perlu kita ikuti
+// sekarang mari kita lihat bagaimana lodash bekerja.
+// di dalam dokumentasinya, lodash menyebutkan bahwa mereka menyediakan utilitas utk membuat JS lebih mudah
+// dg menghilangkan kerumitan ketika menggunakan array, number, object dan string
+// misal utk menjumlahkan setiap nilai number dalam array, kita lakukan dg cara seperti berikut :
+// ---cara konvensional tanpa module---
+
+    const myArray= [1,2,3,4];
+    let sum = 0;
+    for (let i=0; i <4; i++){ // 4= myArray.length
+        sum = sum+myArray[i];
+    }
+    console.log("hasil loop :", sum);
+    // ---akhir kode ---
+
+    // --- atau fungsi reduce ---
+    const arrayKu = [1,2,3,4];
+    let sum1 = arrayKu.reduce((prev,curr)=>{
+        return prev+curr;
+    });
+    console.log("hasil reduce :", sum1);
+
+    // ---hasil lodash ---
+    import _ from 'lodash';
+    const arrray= [1,2,3,4];
+    const sum2 = _.sum(arrray);
+    console.log(sum2); // output : 10
