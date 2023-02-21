@@ -1,0 +1,21 @@
+{
+  "name": "latihantesting",
+  "version": "1.0.0",
+  "description": "latihan melakukan testing pake jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "uciharis"
+  },
+  "keywords": [
+    "jest"
+  ],
+  "author": "haris n",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.3"
+  }
+}

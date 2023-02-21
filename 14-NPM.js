@@ -115,3 +115,20 @@ import variableNames from 'packages-name'; //contoh import
     const arrray= [1,2,3,4];
     const sum2 = _.sum(arrray);
     console.log(sum2); // output : 10
+
+    // --- uninstall package --
+    // untuk melakukan penghapusan package dengan cara 
+    /** -- ini kode --
+     * npm uninstall <package-name> </package-name>
+     * -- akhir kode
+     * 
+     * jika terdapat devDependencies, cukup tambahkan --save-dev di akhir perintah
+     * 
+     * -- ini kode --
+     * npm uninstall <package-name></package-name> --save-dev
+     * -- akhir kode --
+     * 
+     * contoh hapus lodash :
+     * npm uninstall lodash
+     * 
+     */
