@@ -90,5 +90,8 @@
  * npm runt test -- --coverage
  *
  *setelah proses selesai, jest akan menggenerate laporan pengujian dalam folder coverage
+ *
+ *
+ * link cheatsheet jest: https://devhints.io/jest
  */
 
