@@ -15,3 +15,9 @@
 // gunakan endpoint berantai utk resource yg memiliki hirarki atau relasi
 //contoh utk mendapatkan daftar komentar pada sebuah artikel, endpoint GET /articles/:id/comments
 //tidak hanya GET, prinsip ini juga cocok diterapkan pada HTTP verb POST, PUT ataupun DELETE
+
+// referensi :
+// https://www.paessler.com/it-explained/server
+// https://www.ibm.com/support/knowledgecenter/SSGMCP_5.3.0/com.ibm.cics.ts.internet.doc/topics/dfhtl21.html
+// https://www.ibm.com/support/knowledgecenter/SSGMCP_5.3.0/com.ibm.cics.ts.internet.doc/topics/dfhtl22.html
+// https://everything.curl.dev/project/name
