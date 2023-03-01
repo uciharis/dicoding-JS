@@ -144,3 +144,73 @@ TODO 4 : Isi dengan nilai heapUsed dari instance process.memoryUsage
  */
 // setelah itu eksekusi kode berikut
 // SET NODE_ENV=development && node ./process-object/index.js <Nama Anda>
+
+// -- modularization --
+//semakin komplek programg yang dikembangkan, semakin komplek juga kode yang ditulis.
+// jika kode dituliskan dalam 1 berkas saja maka akan sangat sulit membaca serta memelihara kode tsb
+// idealnya, satu berkas JS hanya memiliki 1 tanggung jwab saja.bila lebih dari satu, itu berarti anda perlu berkenalan dg modularisasi
+// odularisasi dalam pemrogrman merupakan tekni pemisahan kode menjadi modul2 yang bersifat independen namun bisa saling digunakan
+// pemisahan kode menjadi modul terpisah inilah yang dapat membuat kode JS lebih mudah diorganisir
+// pada node.js, tiap berkas javascript adalah modul. anda dapat membagikan nilai var, objek, class atau apapun itu diantara mdul
+// untuk melakukannya, anda perlu mengekspor nilai pada module tsb
+// utk mengekspor, simpan nilai tsb pada properti module.exports
+// contoh :
+/** -- coffee.js --
+ * const coffee = {
+ *     name: 'tubruk',
+ *     price: 15000,
+ * };
+ * 
+ * module.exports = coffee;
+ * 
+ */
+
+// setelah itu nilai coffe dapat digunakan pada berkas JS lainnya dengan cara import nilainya melalui fungsi global required().
+/** --app.js --
+ * 
+ * const coffe = require ('./coffee');
+ * console.log(coffee); * 
+ */
+// perhatikan nilai parameter yang diberikan pada require(). parameter merupakan lokasi dari module yarget impor.
+// jika anda hendak mengimpor modul lokal, selalu gunakan tanda ./ di awal alamatnya
+// bila berkas coffee.js diletakkan di folder yang berbeda dengan app.js , contohnya memiliki struktur seperti ini
+/** -- struktur folder --
+ * root folder:.
+ * |---app.js
+ * |---package.json
+ * |---lib
+ *      |---coffee.js
+ */
+// maka kita perlu mengimpornya dengan alamat:
+// -- app.js --
+// const coffee = require('./lib/coffee.js');
+// anda juga bisa menggunakan tanda  ../ untuk keluar dari 1 level folder. ini berguna bila ingin mengimpor module yang berbeda hierarki seperti ini:
+// -- app.js --
+// const coffee = require('../lib/coffee');
+//bila anda menggunakan vscode, anda akan terbantu dengan fitur auto import yang disediakan
+// melalui fitur ini, anda tidak perlu repot menuliskan alamat modul secara manual. tinggal tulis saja nilai yang ingin anda impor
+// vscode akan menangani penulisan fungsi require();
+
+// dengan melakukan impor dan ekspor nilai, kita bs memanfaatkan objek literal dan objek destrukturing agar dapat mengimpor dan mengekspor lebih dari 1 nilai pada sebuah modul seperti berikut:
+// ---user.js --
+const firstName = 'harry';
+const lastName = 'potter';
+module.exports = {firstName, lastName}; // ini adalah modul
+
+// --app.js --
+const {firstName, lastName}= require('./user');
+console.log(firstName);
+console.log(lastName);
+
+// untuk memudahkan dev dalam proses pengembangan, nodejs menyediakan beberapa modul bawaan yang dapat anda manfaatkan guna mendukung efisiensi melakukan hal secara umum
+// modul bawaan tsb dikenal sbg core modules. anda bisa mengimport core modules dengan fungsi yang sama yaitu require();
+// impor core modul http
+const http = require('http');
+
+// lokasi core module dituliskan tidak seperti local module. lokasi bersifat mutlak
+// core module disimpan di folder lib pada lokasi nodejs dipasang sehingga kita ckup menuliskan nama modulnya saja
+//ada 3 jenis modul pada nodejs, berikut rinciannya :
+// - local module : modul dibuat secara lokal berlokasi pada nodejs projek
+// - core module : modul bawaan nodejs berlokasi di folder lib dimana nodejs terpasang pada komputer anda. core module dapat diletakkan dimana sjaa
+// - third part module : module yg dipasang melalui node package manager. bila third party modul terpasang secar lokal maka modul disimpan pada node_modules d nodejs
+//   bila dipasang secara global, akan disimpan pada node_modules di lokasi nodejs dipasang
