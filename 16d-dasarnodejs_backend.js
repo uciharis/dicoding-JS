@@ -144,6 +144,7 @@ TODO 4 : Isi dengan nilai heapUsed dari instance process.memoryUsage
  */
 // setelah itu eksekusi kode berikut
 // SET NODE_ENV=development && node ./process-object/index.js <Nama Anda>
+// jawaban cek di folder nodejs-basic/process-object
 
 // -- modularization --
 //semakin komplek programg yang dikembangkan, semakin komplek juga kode yang ditulis.
