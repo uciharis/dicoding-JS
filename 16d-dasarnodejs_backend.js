@@ -215,3 +215,63 @@ const http = require('http');
 // - core module : modul bawaan nodejs berlokasi di folder lib dimana nodejs terpasang pada komputer anda. core module dapat diletakkan dimana sjaa
 // - third part module : module yg dipasang melalui node package manager. bila third party modul terpasang secar lokal maka modul disimpan pada node_modules d nodejs
 //   bila dipasang secara global, akan disimpan pada node_modules di lokasi nodejs dipasang
+
+// latihan modularization
+// sekarang kita tahu bagaimana cara menerapkan modularisasi pada JS.
+// buat folder baru dengan nama modularization pada proyek nodejs-basic dan didalamnya buat tiga berkas 
+// JS baru yakni Tiger.js, Wolf.js dan index.js
+// dengan masing2 berkas ks tertulis starter kode sbb:
+
+/**-- Tiger.js
+ * 
+ * class Tiger {
+ * constructor(){
+ * this.strength = Math.floor(Math.random()*100);
+ * }
+ * growl(){
+ * console.log('grgrgr!')
+ * }
+ * }
+ * //todo
+ */
+
+/**-- Wolf.js
+ * 
+ * class Wof{
+ * construction(){
+ * this.strength=Math.floor(Math.random()*100)
+ * }
+ * howl(){
+ * console.log('owoooo!')
+ * }
+ * }
+ * //todo 2
+ */
+
+/**--index.js
+ * 
+ * const Tiger=//todo3
+ * const Wolf=//todo4
+ * const fighting = (tiger, wolf)=>{
+ * if(tiger.strength>wolf.strength){
+ * tiger.rowl();
+ * return;
+ * }
+ * if(wolf.strength > tiger.strength){
+ * wolf.howl();
+ * return;
+ * }
+ * console.log('tiger and wolf have same strength);
+ * }
+ * 
+ * const tiger=new Tiger ();
+ * const wolf=new Wolf();
+ * fight(tiger,wolf);
+ */
+//selesaikan dg ketentuan sbb :
+// TODO 1 : Ekspor class Tiger agar dapat digunakan pada berkas JavaScript lain.
+// TODO 2 : Ekspor class Wolf agar dapat digunakan pada berkas JavaScript lain.
+// TODO 3 : Import class Tiger dari berkas Tiger.js.
+// TODO 4 : Import class Wolf dari berkas Wolf.js.
+// lalu jalankan command berikut :
+// node ./modularization/index.js
