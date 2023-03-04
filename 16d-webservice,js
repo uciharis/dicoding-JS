@@ -1,0 +1,7 @@
+// --- Membangun web service dengan nodejs ---
+// mater ini akan membahas webservice menggunakan js
+// materi yang akan dibahas adalah sbb :
+// - membangun web service menggunakan nodejs native
+// - mengenal nodejs http framework
+// - membangun web service menggunakan hapi.js( framework)
+// - membangun RESTful API sederhana
