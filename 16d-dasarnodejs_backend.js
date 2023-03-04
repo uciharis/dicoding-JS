@@ -449,3 +449,132 @@ myEventEmitter.emit('coffee-order', { name: 'Tubruk', price: 15000 });
 Kopi Tubruk telah dibuat!
 Bill sebesar 15000 telah dibuat!
  */
+
+// --- Filesystem
+// seluruh data di komputer dikelola dan diakses melalui filesystem.
+// sangat penting utk membatasi javascript dalam mengakses filestystem
+// teknik ini dinamakan sandboxing
+// javascript mendapatkan batasan di backend namun tidak seketat di browser
+// hal ini dikarenakan file system pada backend sangat penting utk melaakukan akses file dan menulis
+// nodejs menyediakan core module fs yang dapat mempermudah kita dalam mengakses filesystem
+// setiap metod yang ada di module fs tersedia dalam 2 versi yaitu asynchronous dan synchronous
+// untuk mengakses berkas pada komputer, kita menggunakan method fs.readFile()
+// metode ini akan menerima 3 argumen yaitu lokasi berkas, encoding dan callback funct yang terpanggil
+// apabila berkas berhasil atau gagal diakses
+/** -- contoh mengakses berkas
+ * --- versi asynchronous ---
+ * const fs = require('fs');
+ * 
+ * const fileReadCallback = (error, data)=> {
+ * if(error){
+ * console.log('gagal membaca berkas');
+ * return;
+ * }
+ * console.log(data);
+ * };
+ * fs.readFile('todo.txt', 'UTF-8', fileReadCallback);
+ * 
+ * --- versi synchronous ---
+ * const fs = require('fs');
+ * 
+ * const data = fs.readFileSync ('todo.txt', 'UTF-8');
+ * console.log(data);
+ */
+// latihan menelusuri berkas ada di folder filesystem
+
+// ---Readable Stream ---
+// pada materi sebelumnya kita sudah tahu cara mengakses berkas melalui fs.readFile()
+// bekerja dengan membaca berkas file hingga selesai lalu mengembalikan data
+// jika digunakan untuk mengakses berkas yang besar, akan membutuhkan waktu dan memori yang besar
+// hal ini tidak efektif
+// solusinya adalah dengan menggunakan teknik stream
+// teknik ini tidak membaca berkas secara langsung sekaligus tetapi mengirim bagian per bagian
+// cara ini yang digunakan Youtube agar video dapat ditampilkan seketika pada pengguna
+// teknik stream merupakan konsep fundamental yang mendukung aplikasi nodejs bekerja
+// teknik ini dapat menangani kasus baca tulis berkas, komunikasi jaringan atau beban kerja apapun agar dapat
+// berjalan dengan lebih efisien
+// kita dapat membuat readabe stream dengan menggunakan metod createReadStream() dari core module fs
+/** --- teknik readable stream
+ * 
+ * const fs = require('fs');
+ 
+const readableStream = fs.createReadStream('./article.txt', {
+    highWaterMark: 10
+});
+ 
+readableStream.on('readable', () => {
+    try {
+        process.stdout.write(`[${readableStream.read()}]`);
+    } catch(error) {
+        // catch the error when the chunk cannot be read.
+    }
+});
+ 
+readableStream.on('end', () => {
+    console.log('Done');
+});
+
+ */
+//  fungsi createReadStream() menerima 2 argumen . pertama adalah lokasi berkas yang hendak dibaca
+// kedua adalah objek konfigurasi
+// dalam objek konfigurasi kita bisa menetapkan ukuran buffer melalui properti highWaterMark
+// nilai defaultnya adalah 16384 bytes (16kb)
+// anda tidak perlu menetapkan properti ini bila ingin tetap memiliki nilai default
+// namun karena kita hanya menggunakan berkas text yang ukurannya kecil maka kita akan buffer
+// menjadi 10 bytes.
+// artinya berkas akan dibaca tiap 10 karakter (10 bytes)
+// buffer dalam stream artinya adalah memori sementara yang digunakan oleh stream dalam simpan data
+// createReadStrea() mengembalikan EventEmitter dimana kita dapat menetapkan fungsi listener
+// setiap kali event readable dibangkitkan. Event readable akan dibangkitkan ketika buffer sudah memiliki ukuran yang sesuai
+//  dengan nilai yang ditetapkan pada properti highWaterMark
+// kemudian event end akan dibangkitkan setelah proses stream selesai
+/** ---contoh penggunaan readable stream
+ * 
+ * -- article.txt
+ * 
+ * Stream di Node.js
+ * Teknik Stream merupakan salah satu konsep fundamental yang mendukung aplikasi nodejs bekerja
+ * teknik ini dapat menangani kasus baca tulis berkas, komunikasi jaringan, atau beban kerja apapun agar dapat berjalan dengan efisien
+ * 
+ * 
+ * ---result
+ * [Stream di ][Node.js
+][Teknik str][eam merupa][kan salah ][satu konse][p fundamen][tal yang m][endukung a][plikasi No][deJS beker][ja. Teknik][ ini dapat][ menangani][ kasus bac][a tulis be][rkas, komu][nikasi jar][ingan, ata][u beban ke][rja apapun][ agar dapa][t berjalan][ dengan le][bih efisie][n.][null]Done
+
+ * 
+ */
+
+
+// --- Writable Stream 
+
+// teknik stream juga digunakan untuk menulis berkas.
+//  untuk membuat writable stream menggunakan metod createWriteStream() dari core module fs
+
+/**
+ * const fs = require('fs');
+ * 
+ * const writableSteam = fs.createWriteStream('output.txt');
+ */
+
+// fungsi ini menerima satu argume yakni alamat berkas utk menyimpan data yang dituliskan
+// berkas output akan dibuat secara otomatis jika tidak ada, namun berkas akan ditimpa apabila berkas tsb sudah ada
+// maka harus berhati-hati
+// lalu utk menuliskan data pada writable stream,  gunakan method write()
+
+/**--- contoh write()
+ * 
+ * const fs = required('fs');
+ * 
+ * const writableStream = fs.createWriteStream('output.txt');
+ * 
+ * writableStream.write ('ini merupakan teks baris pertama!\n');
+ * writablestream.write('ini merupakan teks baris kedua!\n');
+ * writableStream.end('akhir dari writable stream!');
+ */
+
+//-- output :
+// ini merupakan teks baris pertama!
+// ini merupakan teks baris kedua!
+// akhir dari writable stream!
+
+// latihan stream : cek di folder stream
