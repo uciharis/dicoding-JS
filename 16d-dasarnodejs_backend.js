@@ -275,3 +275,177 @@ const http = require('http');
 // TODO 4 : Import class Wolf dari berkas Wolf.js.
 // lalu jalankan command berikut :
 // node ./modularization/index.js
+
+// jawaban di folder modular
+
+// --- Node Package Manager
+// dalam industri, sangat lumrah industri memanfaatkan module atau package luar agar pengembangan dapat lebih cepat
+// semakin komplek aplikasi tsb maka semakin banyak pula module atau paclage yang digunakan
+// disinilah kita memerlukan sebuah package manager.
+// npm merupakan pengelola package utk javascript yang dapat memudahkan mengelola package
+// package tersedia di www.npmjs.com/ 
+// biasanya terpasang otomatis saat memasang nodejs
+// selain utk membuat projek JS, NPM juga digunakan utk memasang atau menghapus third party module. 
+// modul yang dipasang melalui NPM akan disimpan di folder node_modules
+// terdapat 2 tipe memasang modul yaitu global dan lokal
+// jika modul terpasang secara global, maka modul tersebut akan bersifat layaknya core module dan dapat digunakan di mana pun
+// sedangkan modul yang dipasang lokal hanya dapat digunakan pada cakupan projek nodejs yang memasangnya saja
+// untuk menghindari side effect akibat memasang module, lebih baik kita menggunakan module secara lokal.
+// gunakan npx apabila ingin menjalankan nodejs package dimana pun
+// momentjs merupakan salah satu modul 3rd party populer utk mengelola waktu di nodejs
+// untuk memasangnya secara lokal, jalankan perintah berikut pada terminal
+// --ini kode:
+// npm install moment
+
+// setelah pemasangan selesai, anda bisa menggunakan modul moment pada proyek nodejs anda
+/** --contoh kode menggunakan module momentjs
+ * 
+ * const moment = require('moment') // mesti diimport module nya setelah di install
+ * 
+ * const date = moment().format("MMM Do YY");
+ * console.log(date);
+ * 
+ * // output : Jan 11th 21
+ */
+
+//package yang dipasang secara lokal melalui NPM akan dicatat dalam berkas package.json, lebih tepatnya
+// pada objek dependencies
+
+/** --isi file package.json
+ * 
+ * {
+  "name": "nodejs-basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}
+ * 
+ */
+
+// menunjukkan bahwa proyek nodejs anda bergantung pada module moment versi 2.29.1
+// informasi ini berguna bila anda membagikan proyek ini ke orang lain. orang tsb akan menyamakan versi module yg dibutuhkan
+// utk menghapus modul 3rd party gunakan kode berikut:
+// npm uninstall moment
+
+//terakhir, NPM bisa berfungsi sebagai runner script. ia dapat menjalankan script yang dituliskan pada objek scripts yang ada di berkas package.json
+// dengan menetapkan script pada package.json, anda dapat membuat jalan pintas utk menjalankan nodejs proses.
+// selain itu, anda bisa membuat lebih dari 1 script sesuai dengan environment yang diinginkan.
+/**-- contoh script
+ * 
+ * "scripts": {
+    "start-dev": "NODE_ENV=development node app.js",
+    "start": "NODE_ENV=production node app.js"
+  }
+ */
+
+  // lalu jalankan perintah 
+  // npm run <nama script></nama>
+  //contoh : npm run start-dev
+
+// -- events --
+// aplikasi nodejs biasanya memiliki pola event-driven atau memiliki alur bedasarkan suatu kejadian
+// pola event-driven : merespon kepada kejadian tertentu
+// karna biasanya programming dilakukan secara imperatif, biasanya melakukan suatu hal dengan menuliskan instruksi secara runtut
+// dengan pola itu maka membangun program akan kaku.kita tidak tahu kapan suatu kejadian akan terjadi
+// maka diperlukan program yang memiliki pola event-driven
+
+// nodejs menyediakan EventEmitter class yang merupakan member events core module
+/** kodee core module nya :
+ * 
+ * const {EventEmitter} = require('events');
+ * const myEventEmitter = new EventEmitter();
+ */
+// setiap instance dari EventEmitter akan memiliki fungsi on. pada fungsi tsb, kita dapat menentukan aksi berdasarkan sebuah kejadian
+// contoh :
+/**
+ * const {EventEmitter} = require('events');
+ * const myEventEmitter = new EventEmitter();
+ * // fungsi yang akan dijalankan ketika event coffee-order terjadi
+ * const makeCoffee = ({name})=> {
+ * console.log(`kopi ${name} telah dibuat`);
+ * };
+ * // mendaftaran fungsi makeCoffee sebagai listener event coffee-order
+ * myEventEmitter.on('coffee-order', makeCoffee);
+ * 
+ */
+// fungsi on menerima dua buah argumen, yang pertama adalah nama event dan yang kedua adalah listener atau fungsi yang akan dieksekusi ketika event terjadi
+// dari kode diatas, jika terjadi event 'coffee-order' maka fungsi makeCoffee akan dijalankan
+
+// lalu bagaimana cara membangkitkan suatu event?
+// setiap instance dari eventEmitter juga memiliki fungsi emit() yang berguna utk membangkitkan event
+/**
+ * const {eventEmitter} = require('events); // import modul events
+ * 
+ * const myEventEmitter = new EventEmitter();
+ * 
+ * const makeCoffee = ({name})=> {
+ * console.log(`kopi ${name} telah dibuat !`);
+ * };
+ * myEventEmitter.on('coffee-order', makeCoffee);
+ * // memicu event 'coffee-order' terjadi
+ * myEventEmitter.emit('coffee-order', {name: 'Tubruk'});
+ * // output : Kopi Tubruk telah dibuat!
+ */
+
+// fungsi emit() menerima nilai argume sebanyak apapun yang dimau, namun nilai yang pertama merupakan nama dari event yang dibangkitkan
+// argumen ke-2 dan seterusnya adalah nilai yang akan digunakan utk menjadi parameter dari funsi listener
+// anda juga bisa mendaftarkan lebih dari satu fungsi listener pada sebuah event menggunakan fungsi on.
+/** --contoh kode 2 listener :
+ * const { EventEmitter } = require('events');
+ 
+const myEventEmitter = new EventEmitter();
+ 
+const makeCoffee = ({ name }) => {
+    console.log(`Kopi ${name} telah dibuat!`);
+};
+ 
+const makeBill = ({ price }) => {
+    console.log(`Bill sebesar ${price} telah dibuat!`);
+}
+ 
+myEventEmitter.on('coffee-order', makeCoffee);
+myEventEmitter.on('coffee-order', makeBill);
+ 
+myEventEmitter.emit('coffee-order', { name: 'Tubruk', price: 15000 });
+ 
+ //output:
+Kopi Tubruk telah dibuat!
+Bill sebesar 15000 telah dibuat!
+
+ */
+// atau anda bs membuat suatu fungsi khusus utk menangani event. biasanya fungsi ini memiliki nama
+// 'handler' atau 'listener' pada akhir penamaannya
+// seolah membungkus 2 event listener menjadi 1
+/**
+ * const { EventEmitter } = require('events');
+ 
+const myEventEmitter = new EventEmitter();
+ 
+const makeCoffee = (name) => {
+    console.log(`Kopi ${name} telah dibuat!`);
+};
+ 
+const makeBill = (price) => {
+    console.log(`Bill sebesar ${price} telah dibuat!`);
+}
+ 
+const onCoffeeOrderedListener = ({ name, price }) => {
+    makeCoffee(name);
+    makeBill(price);
+}
+ 
+myEventEmitter.on('coffee-order', onCoffeeOrderedListener);
+ 
+myEventEmitter.emit('coffee-order', { name: 'Tubruk', price: 15000 });
+// output:
+Kopi Tubruk telah dibuat!
+Bill sebesar 15000 telah dibuat!
+ */
