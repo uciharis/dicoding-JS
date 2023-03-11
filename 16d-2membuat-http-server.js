@@ -66,7 +66,7 @@
 // --latihan membuat HTTP Server ---
 // projeknya dibuat di folder nodejs-web-server
 // isikan kode berikutke dalam file server.js
-/** -- copy kode ini ke server1.js
+/** -- copy kode ini ke server.js (sudah berpindah ke serverbakbak.js)
  * 
  * const http = require('http');
  
@@ -91,3 +91,8 @@ server.listen(port, host, () => {
 
 // setelah itu jalankan perintah : npm run start 
 // jika berhasil maka akan muncul pesan "Server berjalan pada https://localhost:5000"
+// cek folder nodejs-web-server yang berisi server.js, serverbak.js dan package.json
+// anda bisa coba melakukan request melalui terminal ke server tsb melalui cURL sbb:
+// curl -X GET https://localhost:5000/
+// output : <h1>Halo HTTP Serer!</h1>novi@localhost:~> 
+//atau melalui browser dg mengetik http://localhost:5000/
