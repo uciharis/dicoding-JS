@@ -13,3 +13,10 @@
 // ## abstraksi kejauhan dr nodejs native
 
 // pembelajaran selanjutnya menggunakan hapi utk fitur dasar
+
+// -- membangun web server pake HAPI
+
+// 1. buat projek "hapi-web-server"
+// 2. npm init --y
+// 3. tuliskan : console.log('Halo, kita akan belajar membuat server menggunakan Hapi');
+// 4. jalankan : npm run start
