@@ -18,5 +18,12 @@
 
 // 1. buat projek "hapi-web-server"
 // 2. npm init --y
-// 3. tuliskan : console.log('Halo, kita akan belajar membuat server menggunakan Hapi');
+// 2a. atur NPM runner pada package.json sbb:
+/* ---ini kode ---
+"scripts" : {
+"start" : "node server.js"
+}
+*/
+// 3a. buat file js dengan nama server.js
+// 3b. tuliskan : console.log('Halo, kita akan belajar membuat server menggunakan Hapi');
 // 4. jalankan : npm run start
