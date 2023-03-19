@@ -7,6 +7,10 @@ const init = async()=> {
 
     });
     await server.start();
-    console.log(`server berjalan di ${server.info.uri}`);
+    console.log('server berjalan di',server.info.uri);
 };
+ProcessingInstruction.on('unhandledRejection',(err)=>{
+    console.log(err);
+    Process.exit(1);
+});
 init();

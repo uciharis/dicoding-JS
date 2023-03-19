@@ -55,3 +55,7 @@
  * 
  */
 // 3. jalankan npm run start pada terminal
+// 4. jika server berhasil maka akan muncul pesan 'server berjalan pada http://localhost:5000
+// 5. lakukan permintaan menggunakan cURL sbb:
+// curl -X GET http://localhost:5000
+// 6. secara default Hapi akan mengembalikan respons "not found". hal ini lebih baik drpd dibiarkan begitu saja
