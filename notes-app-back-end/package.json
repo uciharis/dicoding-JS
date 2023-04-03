@@ -1,0 +1,14 @@
+{
+  "name": "notes-app-back-end",
+  "version": "1.0.0",
+  "description": "backend dari aplikasi notes",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "haris n",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
