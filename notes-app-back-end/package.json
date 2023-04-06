@@ -4,11 +4,14 @@
   "description": "backend dari aplikasi notes",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "lint" : "eslint ./"
   },
   "author": "haris n",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.37.0",
+    "eslint-config-google": "^0.14.0",
     "nodemon": "^2.0.22"
   }
 }
