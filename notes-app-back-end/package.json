@@ -4,8 +4,8 @@
   "description": "backend dari aplikasi notes",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "lint" : "eslint ./"
+    "start": "nodemon ./src/server.js",
+    "lint" : "eslint ./src"
   },
   "author": "haris n",
   "license": "ISC",
