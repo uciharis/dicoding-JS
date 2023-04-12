@@ -127,3 +127,120 @@
 // kita sudah punya properti dari objek catatan secara lengkap
 // sekarang saatnya kita masukkin nilai tsb ke dalam array ntes pake metod push()
 
+/**
+ * const addNoteHandler = (request,h)=>{
+ * const {title,tags,body} = request.payload;
+ * const id = nanoid(16);
+ * const createdAt = new Date().toISOString();
+ * const updatedAt = createdAt;
+ * 
+ * const newNote = {
+ * title, tags, body, id, createdAt, updatedAt};
+ * notes.push(newNote);
+ * };
+ */
+
+// jangan lupa impor arrays notes pada berkas handler.js
+
+/**
+ * const {nanoid} = require('nanoid');
+ * const notes = require('./notes');
+ * * const addNoteHandler = (request,h)=>{
+ * const {title,tags,body} = request.payload;
+ * const id = nanoid(16);
+ * const createdAt = new Date().toISOString();
+ * const updatedAt = createdAt;
+ * 
+ * const newNote = {
+ * title, tags, body, id, createdAt, updatedAt,};
+ * notes.push(newNote);
+ * };
+ */
+
+// lalu bagaimana menentukan apakah newNote sudah masuk ke dalam array notes ? 
+// kita bs memanfaatkan metod filter() berdasarkan id catatan utk mengetahuinya
+// implementasi nya sebagai berikut:
+/**
+ * const addNoteHandler = (request, h) => {
+ * const {title, tags, body}=request.payload;
+ * const id = nanoid(16);
+ * const createdAt = new Date().toISOString();
+ * const updatedAt = createdAt;
+ * const newNote = {
+ * title, tags, body, id, createdAt, updatedAt,};
+ * notes.push(newNote);
+ * const isSucces = notes.filter((note)=> note.id ===id).length>0;
+ * };
+ */
+
+// kemudian kita gunakan isSucces utk menentukan respons yang diberikan server. jika isSucces bernilai true makan beri respons berhasil
+// jika false maka beri respons gagal
+
+/**
+ * const addNoteHandler = (request, h) => {
+ * const {title, tags, body}=request.payload;
+ * const id = nanoid(16);
+ * const createdAt = new Date().toISOString();
+ * const updatedAt = createdAt;
+ * const newNote = {
+ * title, tags, body, id, createdAt, updatedAt,};
+ * notes.push(newNote);
+ * const isSucces = notes.filter((note)=> note.id ===id).length>0;
+ * 
+ * if (isSucces){
+ * const response = h.response({
+ * status : 'succes',
+ * message : 'catatan berhasil ditambahkan',
+ * data : {
+ * noteId : id,
+ * }, 
+ * });
+ * response.code(201);
+ * return response;
+ * }
+ * 
+ * const response = h.response({
+ * status: 'fail',
+ * message: 'catatan gagal ditambahkan',
+ * });
+ * response.code(500);
+ * return response;
+ * };
+ */
+
+// selanjutnya kita gunakan fungsi handler ini pada konfigurasi route nya
+// silahkan buka routes.js lalu ganti fungsi handler menjadi seperti ini:
+/**
+ * {
+ * method : 'POST',
+ * path : '/notes',
+ * handler: addNoteHandler,
+ * },
+ */
+
+// jangan lupa import fungsi addNoteHandler nya pada berkas route.js
+// const { addNoteHandler} = require('./handler');
+
+// setelah itu kita gunakan route config pada server. silahkan buka server.js kemudian tambahkan kode
+// berikut ini :
+
+/** -- server.js --
+ * 
+ * const Hapi = require('@hapi/hapi');
+ * const routes = require('./routes');
+ * 
+ * const init = async ()=> {
+ * const server = Hapi.server({
+ * port : 5000,
+ * host : 'localhost',
+ * });
+ * 
+ * server.route(routes);
+ * await server.start();
+ * console.log(`server berjalan pada ${server.info.uri}`);
+ * };
+ * init();
+ * 
+ */
+
+// ketika kita jalankan webapps maka kembali eror karna dihalangi same-orign policy
