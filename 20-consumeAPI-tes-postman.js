@@ -43,3 +43,44 @@
 // pastikan server berjalan dlu, dg cara : npm run start-dev
 
 // secara default, Postman memformat respon agar lbh mudah dibaca, utk melihat respon asli silahkan cek di tab Raw
+
+
+// --- Mendapatkan seluruh catatan yang disimpan
+// utk mendapatkan catatan yang pernah disimpan, kita akan menggunakan "GET"
+// silahkan buka tab baru dan lalukan request ke url : localhost:5000/notes
+// tanpa melampirkan data apapun pada request kali ini, langsung tekan send
+
+
+
+// --- mendapatkan catatan secara spesifik
+
+// sekarang kita akan konsum API utk dapatkan catatan secara spesifik. silahkan buka request dg tab baru
+// isikan url : localhost:5000/notes/<notes id yang tersedia >
+// id nya misalkan kita isi 'Y85P5Vxy9-ehb1pZ’
+// utk metod, tetap menggunakan "GET"
+// tidak perlu melampirkan data apapun pada request. langsung tekan send
+
+
+
+
+// --- Mengubah Catatan
+// buka tab baru, isikan url : localhost:5000/notes/< note id yang tersedia>
+// gunakan method PUT
+// utk mengubah catatan, kita perlu melampirkan data catatan terbaru pada body request
+// maka dari itu lampirkan struktur JSON pada body request
+/*
+{
+    "title" : "Catatan A revisi",
+    "tags" : ["Android", "Web"],
+    "body" : "Isi dari catatan A revisi"
+}
+*/
+// tekan send
+
+
+// --- Menghapus Catatan
+
+// url masih sama, gunakan url : localhost:5000/notes/< note id yang tersedia>
+// gunakan metod DELETE
+// tidak perlu mengisikan data apapun pada body request
+// tekan send
