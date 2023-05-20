@@ -89,4 +89,11 @@
 
 // --- Membuat Collection dan Environment
 
-// 
+// utk membuat collection baru, tutup semua tab dan kembali diulang dari awal.
+// lalu buka tab collection yang ada di samping kiri
+// klik tombol +, lalu collection baru akan terbentuk
+// silahkan rename "new collection" tsb
+// selanjutnya membuat environment, klik "create new environment" dengan notes API tes. lalu
+// tambahkan var baru bernama noteId
+// biarkan initial value dan current value tetap kosong
+// lakukan save, gunakan Note Api Tes sbg environment aktif
